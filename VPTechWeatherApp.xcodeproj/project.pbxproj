@@ -43,6 +43,8 @@
 		3D19F80A2BF00AED00D754C8 /* AlertViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D19F8052BF00AED00D754C8 /* AlertViewModel.swift */; };
 		3D19F80B2BF00AED00D754C8 /* Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D19F8062BF00AED00D754C8 /* Formatter.swift */; };
 		3D19F80C2BF00AED00D754C8 /* NibInstantiatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D19F8072BF00AED00D754C8 /* NibInstantiatable.swift */; };
+		3D19F8102BF00B2F00D754C8 /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D19F80E2BF00B2F00D754C8 /* UIImageExtension.swift */; };
+		3D19F8112BF00B2F00D754C8 /* UIStoryboardExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D19F80F2BF00B2F00D754C8 /* UIStoryboardExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -93,6 +95,8 @@
 		3D19F8052BF00AED00D754C8 /* AlertViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertViewModel.swift; sourceTree = "<group>"; };
 		3D19F8062BF00AED00D754C8 /* Formatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Formatter.swift; sourceTree = "<group>"; };
 		3D19F8072BF00AED00D754C8 /* NibInstantiatable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NibInstantiatable.swift; sourceTree = "<group>"; };
+		3D19F80E2BF00B2F00D754C8 /* UIImageExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
+		3D19F80F2BF00B2F00D754C8 /* UIStoryboardExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIStoryboardExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,6 +160,7 @@
 				3D19F7E82BF00A5800D754C8 /* Networking */,
 				3D19F7EF2BF00A8D00D754C8 /* Models */,
 				3D19F8022BF00AD500D754C8 /* Helpers */,
+				3D19F80D2BF00B1100D754C8 /* Extensions */,
 				3D19F7A32BEFD5D400D754C8 /* AppDelegate.swift */,
 				3D19F7A52BEFD5D400D754C8 /* SceneDelegate.swift */,
 				3D19F7A72BEFD5D400D754C8 /* ViewController.swift */,
@@ -220,6 +225,15 @@
 				3D19F8042BF00AED00D754C8 /* Reusable.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		3D19F80D2BF00B1100D754C8 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				3D19F80E2BF00B2F00D754C8 /* UIImageExtension.swift */,
+				3D19F80F2BF00B2F00D754C8 /* UIStoryboardExtension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -372,9 +386,11 @@
 			files = (
 				3D19F8092BF00AED00D754C8 /* Reusable.swift in Sources */,
 				3D19F80B2BF00AED00D754C8 /* Formatter.swift in Sources */,
+				3D19F8102BF00B2F00D754C8 /* UIImageExtension.swift in Sources */,
 				3D19F80C2BF00AED00D754C8 /* NibInstantiatable.swift in Sources */,
 				3D19F8082BF00AED00D754C8 /* Coordinator.swift in Sources */,
 				3D19F7ED2BF00A6700D754C8 /* NetworkService.swift in Sources */,
+				3D19F8112BF00B2F00D754C8 /* UIStoryboardExtension.swift in Sources */,
 				3D19F80A2BF00AED00D754C8 /* AlertViewModel.swift in Sources */,
 				3D19F7A82BEFD5D400D754C8 /* ViewController.swift in Sources */,
 				3D19F7FB2BF00ABB00D754C8 /* City.swift in Sources */,
