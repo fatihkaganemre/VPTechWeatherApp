@@ -28,6 +28,7 @@ class NetworkService: NetworkServiceProtocol {
                     observer.onError(NetworkError.requestFailed(error))
                     return
                 }
+                
                 guard let data  = data else {
                     observer.onError(NetworkError.noData)
                     return
@@ -38,6 +39,7 @@ class NetworkService: NetworkServiceProtocol {
                     decoder.dateDecodingStrategy = .secondsSince1970
                     let model = try decoder.decode(T.self, from: data)
                     observer.onNext(model)
+                    observer.onCompleted()
                 } catch {
                     observer.onError(NetworkError.decodingError(error))
                 }

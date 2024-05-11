@@ -13,10 +13,10 @@
 
 
 # What is next
-- calendar and date dependencies
+- check if should i call onCompleted after onError in Networking
+- better image fetching
 - clean up the code a bit and more reactive
-    -
     - use Rx for data binding and ui events
 - iPad support
-- unit tests
+- Unit tests
 - Better error handling
