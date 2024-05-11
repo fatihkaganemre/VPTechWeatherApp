@@ -24,7 +24,7 @@ class WeatherCell: UITableViewCell, Reusable {
     func bind(withData data: WeatherCellData) {
         dateLabel.text = data.date
         if let imageURL = data.imageURL {
-            weatherImage.downloaded(from: imageURL)
+            weatherImage.load(url: imageURL)
         }
         
         if let max = data.maxTemperature, let min = data.minTemperature {

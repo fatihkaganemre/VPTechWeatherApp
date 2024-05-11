@@ -14,7 +14,7 @@
 
 # What is next
 - check if should i call onCompleted after onError in Networking
-- better image fetching
+- better image fetching with caching the URL !!! or consider using some framework
 - clean up the code a bit and more reactive
     - use Rx for data binding and ui events
 - iPad support

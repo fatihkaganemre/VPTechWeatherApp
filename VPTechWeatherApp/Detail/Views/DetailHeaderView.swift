@@ -44,7 +44,7 @@ class DetailHeaderView: UIView, NibInstantiatable {
             highAndLowTemperatureLabel.text = "H:\(max) - L:\(min)"
         }
         if let imageURL = data.imageURL {
-            imageView.downloaded(from: imageURL)
+            imageView.load(url: imageURL)
         }
     }
 }
