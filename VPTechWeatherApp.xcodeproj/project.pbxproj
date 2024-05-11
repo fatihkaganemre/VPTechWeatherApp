@@ -57,7 +57,7 @@
 		3D19F82C2BF00C2E00D754C8 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D19F82A2BF00C2E00D754C8 /* DetailViewModel.swift */; };
 		3D19F8302BF00C3E00D754C8 /* DetailHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D19F82E2BF00C3E00D754C8 /* DetailHeaderView.xib */; };
 		3D19F8312BF00C3E00D754C8 /* DetailHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D19F82F2BF00C3E00D754C8 /* DetailHeaderView.swift */; };
-		3D19F8332BF00C6500D754C8 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 3D19F8322BF00C6500D754C8 /* README.md */; };
+		3D19F8352BF00CF600D754C8 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 3D19F8342BF00CF600D754C8 /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -122,7 +122,7 @@
 		3D19F82A2BF00C2E00D754C8 /* DetailViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
 		3D19F82E2BF00C3E00D754C8 /* DetailHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailHeaderView.xib; sourceTree = "<group>"; };
 		3D19F82F2BF00C3E00D754C8 /* DetailHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailHeaderView.swift; sourceTree = "<group>"; };
-		3D19F8322BF00C6500D754C8 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../../Desktop/VPTechWeatherApp/README.md; sourceTree = "<group>"; };
+		3D19F8342BF00CF600D754C8 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,7 +163,6 @@
 		3D19F7972BEFD5D400D754C8 = {
 			isa = PBXGroup;
 			children = (
-				3D19F8322BF00C6500D754C8 /* README.md */,
 				3D19F7A22BEFD5D400D754C8 /* VPTechWeatherApp */,
 				3D19F7B92BEFD5D700D754C8 /* VPTechWeatherAppTests */,
 				3D19F7C32BEFD5D700D754C8 /* VPTechWeatherAppUITests */,
@@ -184,6 +183,7 @@
 		3D19F7A22BEFD5D400D754C8 /* VPTechWeatherApp */ = {
 			isa = PBXGroup;
 			children = (
+				3D19F8342BF00CF600D754C8 /* README.md */,
 				3D19F8182BF00BF800D754C8 /* Home */,
 				3D19F8282BF00C1E00D754C8 /* Detail */,
 				3D19F7E82BF00A5800D754C8 /* Networking */,
@@ -431,7 +431,7 @@
 				3D19F8302BF00C3E00D754C8 /* DetailHeaderView.xib in Resources */,
 				3D19F8242BF00C1900D754C8 /* HomeHeaderView.xib in Resources */,
 				3D19F8132BF00B6C00D754C8 /* Main.storyboard in Resources */,
-				3D19F8332BF00C6500D754C8 /* README.md in Resources */,
+				3D19F8352BF00CF600D754C8 /* README.md in Resources */,
 				3D19F7AD2BEFD5D600D754C8 /* Assets.xcassets in Resources */,
 				3D19F7B02BEFD5D600D754C8 /* Base in Resources */,
 				3D19F8252BF00C1900D754C8 /* WeatherCell.xib in Resources */,

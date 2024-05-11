@@ -14,7 +14,7 @@ class HomeViewModel {
     private let formatter: FormatterProtocol
     private var disposeBag = DisposeBag()
     private let forecastSubject = PublishSubject<Forecast>()
-    private let isLoadingSubject = BehaviorSubject<Bool>(value: false)
+    private let isLoadingSubject = BehaviorSubject<Bool>(value: true)
     private var forecasts: Forecast?
     private var dailyForecasts: [DailyForecast] = []
     
@@ -36,12 +36,20 @@ class HomeViewModel {
         self.coordinator = coordinator
     }
     
-    func fetchForecast() {
+    func fetchForecast(isPullToRefresh: Bool = false ) {
         networkService.getForecast(forCity: "Paris")
             .observe(on: MainScheduler.instance)
             .do(
-                onNext: { [weak self] _ in self?.isLoadingSubject.onNext(false) },
-                onSubscribe: { [weak self] in self?.isLoadingSubject.onNext(true) }
+                onNext: { [weak self] _ in 
+                    if !isPullToRefresh {
+                        self?.isLoadingSubject.onNext(false)
+                    }
+                },
+                onSubscribe: { [weak self] in 
+                    if !isPullToRefresh {
+                        self?.isLoadingSubject.onNext(true)
+                    }
+                }
             )
             .subscribe(forecastSubject)
             .disposed(by: disposeBag)

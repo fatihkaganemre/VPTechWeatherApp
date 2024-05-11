@@ -68,7 +68,7 @@ class HomeViewController: UIViewController, UIScrollViewDelegate {
         tableView.refreshControl = refreshControl
         refreshControl.rx
             .controlEvent(.valueChanged)
-            .subscribe(onNext: { [weak self] in self?.viewModel?.fetchForecast() })
+            .subscribe(onNext: { [weak self] in self?.viewModel?.fetchForecast(isPullToRefresh: true) })
             .disposed(by: disposeBag)
         
         tableView.rx.itemSelected.subscribe { [weak self] item in

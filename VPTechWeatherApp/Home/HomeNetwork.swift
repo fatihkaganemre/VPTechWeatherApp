@@ -27,7 +27,6 @@ class HomeNetwork: HomeNetworkProtocol {
                 method: .GET,
                 parameters: [
                     .init(name: "q", value: city),
-                    .init(name: "lang", value: "en"),
                     .init(name: "appid", value: apiKey),
                     .init(name: "units", value: "metric")
                 ]
