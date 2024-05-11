@@ -26,6 +26,9 @@
 		3D19F7E32BF00A3400D754C8 /* RxSwift-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 3D19F7E22BF00A3400D754C8 /* RxSwift-Dynamic */; };
 		3D19F7E52BF00A3400D754C8 /* RxTest in Frameworks */ = {isa = PBXBuildFile; productRef = 3D19F7E42BF00A3400D754C8 /* RxTest */; };
 		3D19F7E72BF00A3400D754C8 /* RxTest-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 3D19F7E62BF00A3400D754C8 /* RxTest-Dynamic */; };
+		3D19F7EC2BF00A6700D754C8 /* NetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D19F7E92BF00A6700D754C8 /* NetworkRequest.swift */; };
+		3D19F7ED2BF00A6700D754C8 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D19F7EA2BF00A6700D754C8 /* NetworkService.swift */; };
+		3D19F7EE2BF00A6700D754C8 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D19F7EB2BF00A6700D754C8 /* NetworkError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +62,9 @@
 		3D19F7C02BEFD5D700D754C8 /* VPTechWeatherAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VPTechWeatherAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D19F7C42BEFD5D700D754C8 /* VPTechWeatherAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPTechWeatherAppUITests.swift; sourceTree = "<group>"; };
 		3D19F7C62BEFD5D700D754C8 /* VPTechWeatherAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPTechWeatherAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		3D19F7E92BF00A6700D754C8 /* NetworkRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkRequest.swift; sourceTree = "<group>"; };
+		3D19F7EA2BF00A6700D754C8 /* NetworkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		3D19F7EB2BF00A6700D754C8 /* NetworkError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +125,7 @@
 		3D19F7A22BEFD5D400D754C8 /* VPTechWeatherApp */ = {
 			isa = PBXGroup;
 			children = (
+				3D19F7E82BF00A5800D754C8 /* Networking */,
 				3D19F7A32BEFD5D400D754C8 /* AppDelegate.swift */,
 				3D19F7A52BEFD5D400D754C8 /* SceneDelegate.swift */,
 				3D19F7A72BEFD5D400D754C8 /* ViewController.swift */,
@@ -145,6 +152,16 @@
 				3D19F7C62BEFD5D700D754C8 /* VPTechWeatherAppUITestsLaunchTests.swift */,
 			);
 			path = VPTechWeatherAppUITests;
+			sourceTree = "<group>";
+		};
+		3D19F7E82BF00A5800D754C8 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				3D19F7EB2BF00A6700D754C8 /* NetworkError.swift */,
+				3D19F7E92BF00A6700D754C8 /* NetworkRequest.swift */,
+				3D19F7EA2BF00A6700D754C8 /* NetworkService.swift */,
+			);
+			path = Networking;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -295,8 +312,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3D19F7ED2BF00A6700D754C8 /* NetworkService.swift in Sources */,
 				3D19F7A82BEFD5D400D754C8 /* ViewController.swift in Sources */,
 				3D19F7A42BEFD5D400D754C8 /* AppDelegate.swift in Sources */,
+				3D19F7EE2BF00A6700D754C8 /* NetworkError.swift in Sources */,
+				3D19F7EC2BF00A6700D754C8 /* NetworkRequest.swift in Sources */,
 				3D19F7A62BEFD5D400D754C8 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
