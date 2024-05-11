@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="HomeHeaderView" customModule="VPTechWeatherApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="197"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="egA-4Z-B92">
+                    <rect key="frame" x="16" y="31.999999999999996" width="361" height="33.666666666666657"/>
+                    <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c1N-T2-4Y5">
+                    <rect key="frame" x="16" y="71.666666666666671" width="361" height="38.333333333333329"/>
+                    <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pef-LR-fHW">
+                    <rect key="frame" x="16" y="116" width="361" height="21"/>
+                    <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="98Y-RR-pYw">
+                    <rect key="frame" x="16" y="143" width="361" height="18"/>
+                    <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="Pef-LR-fHW" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="4Q2-fR-XnJ"/>
+                <constraint firstItem="egA-4Z-B92" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="8jy-ju-b35"/>
+                <constraint firstItem="Pef-LR-fHW" firstAttribute="top" secondItem="c1N-T2-4Y5" secondAttribute="bottom" constant="6" id="B9B-vD-Frv"/>
+                <constraint firstAttribute="trailing" secondItem="Pef-LR-fHW" secondAttribute="trailing" constant="16" id="Dd9-L7-Biy"/>
+                <constraint firstItem="98Y-RR-pYw" firstAttribute="top" secondItem="Pef-LR-fHW" secondAttribute="bottom" constant="6" id="Fej-z6-ke6"/>
+                <constraint firstItem="egA-4Z-B92" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="32" id="J84-qO-b5S"/>
+                <constraint firstAttribute="bottom" secondItem="98Y-RR-pYw" secondAttribute="bottom" constant="36" id="M5a-cv-mPa"/>
+                <constraint firstAttribute="trailing" secondItem="egA-4Z-B92" secondAttribute="trailing" constant="16" id="ME7-d8-F6X"/>
+                <constraint firstItem="c1N-T2-4Y5" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="NJt-uT-18n"/>
+                <constraint firstItem="c1N-T2-4Y5" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Szq-gJ-awh"/>
+                <constraint firstAttribute="trailing" secondItem="c1N-T2-4Y5" secondAttribute="trailing" constant="16" id="Ua6-fh-zZb"/>
+                <constraint firstItem="98Y-RR-pYw" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="ZaA-fR-Wpx"/>
+                <constraint firstItem="c1N-T2-4Y5" firstAttribute="top" secondItem="egA-4Z-B92" secondAttribute="bottom" constant="6" id="bEf-8S-lfu"/>
+                <constraint firstItem="98Y-RR-pYw" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="gmJ-Cv-80D"/>
+                <constraint firstItem="egA-4Z-B92" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="vFY-ru-fU8"/>
+                <constraint firstAttribute="trailing" secondItem="98Y-RR-pYw" secondAttribute="trailing" constant="16" id="vLQ-Ax-fui"/>
+                <constraint firstItem="Pef-LR-fHW" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="zbS-do-0Pg"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="descriptionLabel" destination="Pef-LR-fHW" id="BJN-Bb-bs8"/>
+                <outlet property="highAndLowTemperatureLabel" destination="98Y-RR-pYw" id="jRH-Jw-GN4"/>
+                <outlet property="nameLabel" destination="egA-4Z-B92" id="VS0-kf-LYT"/>
+                <outlet property="temperatureLabel" destination="c1N-T2-4Y5" id="DDU-dA-ux1"/>
+            </connections>
+            <point key="canvasLocation" x="438.93129770992363" y="274.29577464788736"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
