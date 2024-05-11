@@ -33,16 +33,14 @@ class HomeViewController: UIViewController, UIScrollViewDelegate {
         
         viewModel?.fetchForecast()
         viewModel?.cellData()
-            .observe(on: MainScheduler.instance)
-            .bind(to: tableView.rx.items(
+            .drive(tableView.rx.items(
                 cellIdentifier: WeatherCell.reuseIdentifier,
                 cellType: WeatherCell.self
             )) { (row, data, cell) in cell.bind(withData: data) }
             .disposed(by: disposeBag)
         
         viewModel?.headerData()
-            .observe(on: MainScheduler.instance)
-            .subscribe(onNext: { [weak self] data in
+            .drive(onNext: { [weak self] data in
                 guard let data = data else { return }
                 self?.headerView?.bind(withData: data)
                 self?.tableView.refreshControl?.endRefreshing()
@@ -61,9 +59,20 @@ class HomeViewController: UIViewController, UIScrollViewDelegate {
     private func setupTableView() {
         tableView.rx.setDelegate(self).disposed(by: disposeBag)
         tableView.registerNib(WeatherCell.self)
+        setupTableHeaderView()
+        setupTableRefreshControl()
+        tableView.rx.itemSelected.subscribe { [weak self] item in
+            guard let row = item.element?.row else { return }
+            self?.viewModel?.showDetailView(forRow: row)
+        }.disposed(by: disposeBag)
+    }
+    
+    private func setupTableHeaderView() {
         headerView = HomeHeaderView.loadFromNib()
         tableView.tableHeaderView = headerView
-        
+    }
+    
+    private func setupTableRefreshControl() {
         let refreshControl = UIRefreshControl()
         tableView.refreshControl = refreshControl
         refreshControl.rx
@@ -71,9 +80,5 @@ class HomeViewController: UIViewController, UIScrollViewDelegate {
             .subscribe(onNext: { [weak self] in self?.viewModel?.fetchForecast(isPullToRefresh: true) })
             .disposed(by: disposeBag)
         
-        tableView.rx.itemSelected.subscribe { [weak self] item in
-            guard let row = item.element?.row else { return }
-            self?.viewModel?.showDetailView(forRow: row)
-        }.disposed(by: disposeBag)
     }
 }

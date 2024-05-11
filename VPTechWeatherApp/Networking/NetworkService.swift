@@ -14,10 +14,11 @@ protocol NetworkServiceProtocol {
 
 class NetworkService: NetworkServiceProtocol {
     private let session: URLSession = .shared
+    private let apiKey = "1fed17ca4634e53285f3c97dd0389c2a"
     
     func fetch<T: Decodable>(request: NetworkRequest) -> Observable<T> {
         return Observable<T>.create { [weak self] observer in
-            guard let urlRequest = request.urlRequest() else {
+            guard let urlRequest = request.urlRequest(apiKey: self?.apiKey) else {
                 observer.onError(NetworkError.wrongRequest)
                 return Disposables.create()
             }

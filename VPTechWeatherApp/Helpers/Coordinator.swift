@@ -16,6 +16,7 @@ protocol Coordinator {
 protocol AppCoordinatorProtocol {
     func showDetailView(withForecasts forecasts: [DailyForecast])
     func showHomeView()
+    func showAlert(viewModel: AlertViewModel)
 }
 
 class AppCoordinator: Coordinator, AppCoordinatorProtocol {
@@ -39,5 +40,14 @@ class AppCoordinator: Coordinator, AppCoordinatorProtocol {
         let controller: DetailViewController = UIStoryboard.main.instantiateViewController()
         controller.viewModel = viewModel
         navigationController.pushViewController(controller, animated: true)
+    }
+    
+    func showAlert(viewModel: AlertViewModel) {
+        var alertController = UIAlertController(title: viewModel.title, message: viewModel.message, preferredStyle: viewModel.style)
+        viewModel.actions.forEach { action in
+            let action = UIAlertAction(title: action.title, style: action.style, handler: { _ in action.onTapped?() })
+            alertController.addAction(action)
+        }
+        navigationController.present(alertController, animated: true)
     }
 }

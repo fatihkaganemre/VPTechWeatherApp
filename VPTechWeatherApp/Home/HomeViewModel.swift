@@ -7,6 +7,7 @@
 
 import Foundation
 import RxSwift
+import RxCocoa
 
 class HomeViewModel {
     private let networkService: HomeNetworkProtocol
@@ -40,12 +41,15 @@ class HomeViewModel {
         networkService.getForecast(forCity: "Paris")
             .observe(on: MainScheduler.instance)
             .do(
-                onNext: { [weak self] _ in 
+                onNext: { [weak self] _ in
                     if !isPullToRefresh {
                         self?.isLoadingSubject.onNext(false)
                     }
                 },
-                onSubscribe: { [weak self] in 
+                onError: { [weak self]_ in
+                    self?.showAlert()
+                },
+                onSubscribe: { [weak self] in
                     if !isPullToRefresh {
                         self?.isLoadingSubject.onNext(true)
                     }
@@ -55,7 +59,12 @@ class HomeViewModel {
             .disposed(by: disposeBag)
     }
     
-    func headerData() -> Observable<HomeHeaderData?> {
+    private func showAlert() {
+        let alertViewModel = AlertViewModel.requestFailedAlert(errorMessage: "Request Failed")
+        coordinator.showAlert(viewModel: alertViewModel)
+    }
+    
+    func headerData() -> Driver<HomeHeaderData?> {
         forecastSubject.map { [weak self] forecast in
             guard let self = self else { return nil }
             self.forecasts = forecast
@@ -71,10 +80,10 @@ class HomeViewModel {
                 maxTemperature: maxTemp,
                 minTemperature: minTemp
             )
-        }
+        }.asDriver(onErrorJustReturn: nil)
     }
     
-    func cellData() -> Observable<[WeatherCellData]> {
+    func cellData() -> Driver<[WeatherCellData]> {
         forecastSubject.map(\.list)
             .map({ [weak self] dailyForecasts in
                 let groupedDailyForecasts = self?.groupForecastsByDate(forecasts: dailyForecasts) ?? []
@@ -96,15 +105,15 @@ class HomeViewModel {
                         maxTemperature: maxTemp
                     )
                 }
-            }).asObservable()
+            }).asDriver(onErrorJustReturn: [])
     }
     
     func showDetailView(forRow row: Int) {
         let dailyForecast = dailyForecasts[row]
         let forecastsForSelectedDay = forecasts?.list.filter {
-            let forecastDateDay = Calendar.current.component(.day, from: $0.dt)
-            let selectedForecastDateDay = Calendar.current.component(.day, from: dailyForecast.dt)
-            return forecastDateDay == selectedForecastDateDay
+            let forecastDay = Calendar.current.component(.day, from: $0.dt)
+            let selectedForecastDay = Calendar.current.component(.day, from: dailyForecast.dt)
+            return forecastDay == selectedForecastDay
         } ?? []
         coordinator.showDetailView(withForecasts: forecastsForSelectedDay)
     }

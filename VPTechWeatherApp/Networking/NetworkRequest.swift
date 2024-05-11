@@ -12,7 +12,11 @@ struct NetworkRequest {
     let method: HTTPMethod
     let parameters: [URLQueryItem]?
     
-    init(path: String, method: HTTPMethod, parameters: [URLQueryItem]? = nil) {
+    init(
+        path: String,
+        method: HTTPMethod,
+        parameters: [URLQueryItem]? = nil
+    ) {
         self.path = path
         self.method = method
         self.parameters = parameters
@@ -26,9 +30,10 @@ struct NetworkRequest {
         case PATCH
     }
     
-    func urlRequest() -> URLRequest? {
+    func urlRequest(apiKey: String?) -> URLRequest? {
         guard var urlComponent = URLComponents(string: path) else { return nil }
         urlComponent.queryItems = parameters
+        urlComponent.queryItems?.append(.init(name: "appid", value: apiKey))
         guard let url = urlComponent.url  else { return nil }
         var request = URLRequest(url: url)
         request.httpMethod = method.rawValue

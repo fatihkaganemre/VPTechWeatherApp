@@ -14,7 +14,6 @@ protocol HomeNetworkProtocol {
 
 class HomeNetwork: HomeNetworkProtocol {
     private let networkService: NetworkServiceProtocol
-    private let apiKey = "1fed17ca4634e53285f3c97dd0389c2a"
 
     init(networkService: NetworkServiceProtocol = NetworkService()) {
         self.networkService = networkService
@@ -27,7 +26,6 @@ class HomeNetwork: HomeNetworkProtocol {
                 method: .GET,
                 parameters: [
                     .init(name: "q", value: city),
-                    .init(name: "appid", value: apiKey),
                     .init(name: "units", value: "metric")
                 ]
             )
