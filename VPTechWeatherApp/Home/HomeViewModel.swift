@@ -13,6 +13,7 @@ class HomeViewModel {
     private let networkService: HomeNetworkProtocol
     private let coordinator: AppCoordinatorProtocol
     private let formatter: FormatterProtocol
+    private let calendar: CalendarProviderProtocol
     private var disposeBag = DisposeBag()
     private let forecastSubject = PublishSubject<Forecast>()
     private let isLoadingSubject = BehaviorSubject<Bool>(value: true)
@@ -30,11 +31,13 @@ class HomeViewModel {
     init(
         networkService: HomeNetworkProtocol = HomeNetwork(),
         formatter: FormatterProtocol = Formatter(),
-        coordinator: AppCoordinatorProtocol
+        coordinator: AppCoordinatorProtocol,
+        calendar: CalendarProviderProtocol = CalendarProvider()
     ) {
         self.networkService = networkService
         self.formatter = formatter
         self.coordinator = coordinator
+        self.calendar = calendar
     }
     
     func fetchForecast(isPullToRefresh: Bool = false ) {
@@ -111,8 +114,8 @@ class HomeViewModel {
     func showDetailView(forRow row: Int) {
         let dailyForecast = dailyForecasts[row]
         let forecastsForSelectedDay = forecasts?.list.filter {
-            let forecastDay = Calendar.current.component(.day, from: $0.dt)
-            let selectedForecastDay = Calendar.current.component(.day, from: dailyForecast.dt)
+            let forecastDay = calendar.getComponent(.day, fromDate: $0.dt)
+            let selectedForecastDay = calendar.getComponent(.day, fromDate: dailyForecast.dt)
             return forecastDay == selectedForecastDay
         } ?? []
         coordinator.showDetailView(withForecasts: forecastsForSelectedDay)
@@ -121,7 +124,7 @@ class HomeViewModel {
     private func groupForecastsByDate(forecasts: [DailyForecast]) -> [(day: Int, forecast: DailyForecast)] {
         var groupedDailyForecasts: [(day: Int, forecast: DailyForecast)] = []
         forecasts.forEach { forecast in
-            let day = Calendar.current.component(.day, from: forecast.dt)
+            let day = calendar.getComponent(.day, fromDate: forecast.dt)
             if groupedDailyForecasts.isEmpty || !groupedDailyForecasts.contains(where: { $0.0 == day }) {
                 groupedDailyForecasts.append((day: day, forecast: forecast))
             }

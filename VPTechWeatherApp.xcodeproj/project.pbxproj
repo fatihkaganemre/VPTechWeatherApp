@@ -58,6 +58,7 @@
 		3D19F8302BF00C3E00D754C8 /* DetailHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D19F82E2BF00C3E00D754C8 /* DetailHeaderView.xib */; };
 		3D19F8312BF00C3E00D754C8 /* DetailHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D19F82F2BF00C3E00D754C8 /* DetailHeaderView.swift */; };
 		3D19F8352BF00CF600D754C8 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 3D19F8342BF00CF600D754C8 /* README.md */; };
+		3D19F8372BF01FF300D754C8 /* CalendarService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D19F8362BF01FF300D754C8 /* CalendarService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -123,6 +124,7 @@
 		3D19F82E2BF00C3E00D754C8 /* DetailHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailHeaderView.xib; sourceTree = "<group>"; };
 		3D19F82F2BF00C3E00D754C8 /* DetailHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailHeaderView.swift; sourceTree = "<group>"; };
 		3D19F8342BF00CF600D754C8 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
+		3D19F8362BF01FF300D754C8 /* CalendarService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -253,6 +255,7 @@
 				3D19F8062BF00AED00D754C8 /* Formatter.swift */,
 				3D19F8072BF00AED00D754C8 /* NibInstantiatable.swift */,
 				3D19F8042BF00AED00D754C8 /* Reusable.swift */,
+				3D19F8362BF01FF300D754C8 /* CalendarService.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -472,6 +475,7 @@
 				3D19F81C2BF00C0300D754C8 /* HomeViewController.swift in Sources */,
 				3D19F80A2BF00AED00D754C8 /* AlertViewModel.swift in Sources */,
 				3D19F8312BF00C3E00D754C8 /* DetailHeaderView.swift in Sources */,
+				3D19F8372BF01FF300D754C8 /* CalendarService.swift in Sources */,
 				3D19F7FB2BF00ABB00D754C8 /* City.swift in Sources */,
 				3D19F7FD2BF00ABB00D754C8 /* Weather.swift in Sources */,
 				3D19F8012BF00ABB00D754C8 /* Forecast.swift in Sources */,

@@ -26,6 +26,7 @@ class NetworkService: NetworkServiceProtocol {
             let dataTask = self?.session.dataTask(with: urlRequest) { data, response, error in
                 if let error = error {
                     observer.onError(NetworkError.requestFailed(error))
+                    return
                 }
                 guard let data  = data else {
                     observer.onError(NetworkError.noData)
