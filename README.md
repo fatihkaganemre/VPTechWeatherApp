@@ -13,10 +13,12 @@
 
 
 # What is next
-- check if should i call onCompleted after onError in Networking
 - better image fetching with caching the URL !!! or consider using some framework
 - clean up the code a bit and more reactive
     - use Rx for data binding and ui events
 - iPad support
 - Unit tests
-- Better error handling
+- Better error handing: 
+    - The app shows the localised error description as a basic alert.
+    - Error message could be more user friendly with defining specific error types such as:  no data, no internet ... etc 
+
