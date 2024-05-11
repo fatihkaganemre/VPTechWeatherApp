@@ -10,7 +10,6 @@
 		3D19F7A42BEFD5D400D754C8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D19F7A32BEFD5D400D754C8 /* AppDelegate.swift */; };
 		3D19F7A62BEFD5D400D754C8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D19F7A52BEFD5D400D754C8 /* SceneDelegate.swift */; };
 		3D19F7A82BEFD5D400D754C8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D19F7A72BEFD5D400D754C8 /* ViewController.swift */; };
-		3D19F7AB2BEFD5D400D754C8 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 3D19F7AA2BEFD5D400D754C8 /* Base */; };
 		3D19F7AD2BEFD5D600D754C8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3D19F7AC2BEFD5D600D754C8 /* Assets.xcassets */; };
 		3D19F7B02BEFD5D600D754C8 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 3D19F7AF2BEFD5D600D754C8 /* Base */; };
 		3D19F7BB2BEFD5D700D754C8 /* VPTechWeatherAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D19F7BA2BEFD5D700D754C8 /* VPTechWeatherAppTests.swift */; };
@@ -45,6 +44,9 @@
 		3D19F80C2BF00AED00D754C8 /* NibInstantiatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D19F8072BF00AED00D754C8 /* NibInstantiatable.swift */; };
 		3D19F8102BF00B2F00D754C8 /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D19F80E2BF00B2F00D754C8 /* UIImageExtension.swift */; };
 		3D19F8112BF00B2F00D754C8 /* UIStoryboardExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D19F80F2BF00B2F00D754C8 /* UIStoryboardExtension.swift */; };
+		3D19F8132BF00B6C00D754C8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D19F8122BF00B6C00D754C8 /* Main.storyboard */; };
+		3D19F8162BF00B7D00D754C8 /* HomeViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D19F8142BF00B7D00D754C8 /* HomeViewModelTests.swift */; };
+		3D19F8172BF00B7D00D754C8 /* DetailViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D19F8152BF00B7D00D754C8 /* DetailViewModelTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,7 +71,6 @@
 		3D19F7A32BEFD5D400D754C8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3D19F7A52BEFD5D400D754C8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		3D19F7A72BEFD5D400D754C8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		3D19F7AA2BEFD5D400D754C8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3D19F7AC2BEFD5D600D754C8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3D19F7AF2BEFD5D600D754C8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3D19F7B12BEFD5D600D754C8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -97,6 +98,9 @@
 		3D19F8072BF00AED00D754C8 /* NibInstantiatable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NibInstantiatable.swift; sourceTree = "<group>"; };
 		3D19F80E2BF00B2F00D754C8 /* UIImageExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
 		3D19F80F2BF00B2F00D754C8 /* UIStoryboardExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIStoryboardExtension.swift; sourceTree = "<group>"; };
+		3D19F8122BF00B6C00D754C8 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		3D19F8142BF00B7D00D754C8 /* HomeViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewModelTests.swift; sourceTree = "<group>"; };
+		3D19F8152BF00B7D00D754C8 /* DetailViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewModelTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,7 +168,7 @@
 				3D19F7A32BEFD5D400D754C8 /* AppDelegate.swift */,
 				3D19F7A52BEFD5D400D754C8 /* SceneDelegate.swift */,
 				3D19F7A72BEFD5D400D754C8 /* ViewController.swift */,
-				3D19F7A92BEFD5D400D754C8 /* Main.storyboard */,
+				3D19F8122BF00B6C00D754C8 /* Main.storyboard */,
 				3D19F7AC2BEFD5D600D754C8 /* Assets.xcassets */,
 				3D19F7AE2BEFD5D600D754C8 /* LaunchScreen.storyboard */,
 				3D19F7B12BEFD5D600D754C8 /* Info.plist */,
@@ -176,6 +180,8 @@
 			isa = PBXGroup;
 			children = (
 				3D19F7BA2BEFD5D700D754C8 /* VPTechWeatherAppTests.swift */,
+				3D19F8152BF00B7D00D754C8 /* DetailViewModelTests.swift */,
+				3D19F8142BF00B7D00D754C8 /* HomeViewModelTests.swift */,
 			);
 			path = VPTechWeatherAppTests;
 			sourceTree = "<group>";
@@ -357,9 +363,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3D19F8132BF00B6C00D754C8 /* Main.storyboard in Resources */,
 				3D19F7AD2BEFD5D600D754C8 /* Assets.xcassets in Resources */,
 				3D19F7B02BEFD5D600D754C8 /* Base in Resources */,
-				3D19F7AB2BEFD5D400D754C8 /* Base in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -414,6 +420,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				3D19F7BB2BEFD5D700D754C8 /* VPTechWeatherAppTests.swift in Sources */,
+				3D19F8162BF00B7D00D754C8 /* HomeViewModelTests.swift in Sources */,
+				3D19F8172BF00B7D00D754C8 /* DetailViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -442,14 +450,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		3D19F7A92BEFD5D400D754C8 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				3D19F7AA2BEFD5D400D754C8 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		3D19F7AE2BEFD5D600D754C8 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
