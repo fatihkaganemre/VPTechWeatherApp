@@ -14,10 +14,40 @@
             filePath = "VPTechWeatherApp/Home/HomeViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "65"
-            endingLineNumber = "65"
+            startingLineNumber = "57"
+            endingLineNumber = "57"
             landmarkName = "navigateToDetails"
             landmarkType = "24">
+            <Locations>
+               <Location
+                  uuid = "D08081B7-A5D8-4ECE-BD18-72853C9BFAEE - ee190c1f9f06d420"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Int) -&gt; VPTechWeatherApp.HomeViewModelOutput in VPTechWeatherApp.HomeViewModel.navigateToDetails.getter : RxSwift.Observable&lt;VPTechWeatherApp.HomeViewModelOutput&gt;"
+                  moduleName = "VPTechWeatherApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/fatih/Apps/VeePeeAssignment/VPTechWeatherApp/Home/HomeViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "65"
+                  endingLineNumber = "65">
+               </Location>
+               <Location
+                  uuid = "D08081B7-A5D8-4ECE-BD18-72853C9BFAEE - ee190c1f9f06d528"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Int) -&gt; VPTechWeatherApp.HomeViewModelOutput in VPTechWeatherApp.HomeViewModel.navigateToDetails.getter : RxSwift.Observable&lt;VPTechWeatherApp.HomeViewModelOutput&gt;"
+                  moduleName = "VPTechWeatherApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/fatih/Apps/VeePeeAssignment/VPTechWeatherApp/Home/HomeViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "57"
+                  endingLineNumber = "57">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy

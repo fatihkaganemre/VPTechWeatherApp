@@ -14,14 +14,6 @@ enum HomeViewModelOutput {
     case details(forecasts: [DailyForecast])
 }
 
-struct HomeViewData {
-    let isLoading: Driver<Bool>
-    let headerData: Driver<HomeHeaderData?>
-    let cellDatas: Driver<[WeatherCellData]>
-    let selectedItem: PublishRelay<Int>
-    let pullToRefresh: PublishRelay<Void>
-}
-
 protocol HomeViewModelProtocol {
     var output: Observable<HomeViewModelOutput> { get }
     var homeViewData: HomeViewData { get }

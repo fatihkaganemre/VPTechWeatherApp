@@ -9,6 +9,14 @@ import UIKit
 import RxCocoa
 import RxSwift
 
+struct HomeViewData {
+    let isLoading: Driver<Bool>
+    let headerData: Driver<HomeHeaderData?>
+    let cellDatas: Driver<[WeatherCellData]>
+    let selectedItem: PublishRelay<Int>
+    let pullToRefresh: PublishRelay<Void>
+}
+
 class HomeViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var loader: UIActivityIndicatorView!

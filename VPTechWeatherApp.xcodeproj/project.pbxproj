@@ -59,6 +59,7 @@
 		3D19F8352BF00CF600D754C8 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 3D19F8342BF00CF600D754C8 /* README.md */; };
 		3D19F8372BF01FF300D754C8 /* CalendarProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D19F8362BF01FF300D754C8 /* CalendarProvider.swift */; };
 		3DF8F5192BF0D8FF00ADD4FD /* DependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF8F5182BF0D8FF00ADD4FD /* DependencyContainer.swift */; };
+		3DF8F51E2BF1695C00ADD4FD /* DetailHeaderData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF8F51D2BF1695C00ADD4FD /* DetailHeaderData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -125,6 +126,7 @@
 		3D19F8342BF00CF600D754C8 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 		3D19F8362BF01FF300D754C8 /* CalendarProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarProvider.swift; sourceTree = "<group>"; };
 		3DF8F5182BF0D8FF00ADD4FD /* DependencyContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyContainer.swift; sourceTree = "<group>"; };
+		3DF8F51D2BF1695C00ADD4FD /* DetailHeaderData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailHeaderData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -304,6 +306,7 @@
 		3D19F82D2BF00C3100D754C8 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				3DF8F51D2BF1695C00ADD4FD /* DetailHeaderData.swift */,
 				3D19F82F2BF00C3E00D754C8 /* DetailHeaderView.swift */,
 				3D19F82E2BF00C3E00D754C8 /* DetailHeaderView.xib */,
 			);
@@ -482,6 +485,7 @@
 				3D19F8012BF00ABB00D754C8 /* Forecast.swift in Sources */,
 				3D19F7FF2BF00ABB00D754C8 /* Main.swift in Sources */,
 				3D19F7A42BEFD5D400D754C8 /* AppDelegate.swift in Sources */,
+				3DF8F51E2BF1695C00ADD4FD /* DetailHeaderData.swift in Sources */,
 				3D19F7EE2BF00A6700D754C8 /* NetworkError.swift in Sources */,
 				3D19F8002BF00ABB00D754C8 /* Coordinate.swift in Sources */,
 				3D19F7FC2BF00ABB00D754C8 /* Sys.swift in Sources */,
