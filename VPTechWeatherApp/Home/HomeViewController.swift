@@ -66,7 +66,7 @@ class HomeViewController: UIViewController, UIScrollViewDelegate {
         
         tableView.rx
             .itemSelected
-            .map(\.row)
+            .map {  $0.row }
             .bind(to: viewModel.homeViewData.selectedItem)
             .disposed(by: disposeBag)
     }
