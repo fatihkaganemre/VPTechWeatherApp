@@ -5,18 +5,16 @@
 
 
 # Architectural choices
-- How RxSwift was utilised 
-- RxSwift is used for async code
+- RxSwift is used for async code (How RxSwift was utilised)
     - Driver trait used for driving UI (reference: https://github.com/ReactiveX/RxSwift/blob/main/Documentation/Traits.md)
 - MVVM architecture
 - Coordinator pattern for navigation
 
-
 # What is next
+- Dependency container
+- Coordinator more reactive
+- Using Rx traits
 - better image fetching with caching the URL !!! or consider using some framework
-- clean up the code a bit and more reactive
-    - use Rx for data binding and ui events
-- iPad support
 - Unit tests
 - Better error handing: 
     - The app shows the localised error description as a basic alert.

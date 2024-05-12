@@ -12,9 +12,8 @@ import RxSwift
 class HomeViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var loader: UIActivityIndicatorView!
-    var viewModel: HomeViewModel?
+    var viewModel: HomeViewModelProtocol!
     private var headerView: HomeHeaderView?
-    private var dailyForecasts: [DailyForecast] = []
     private var disposeBag = DisposeBag()
     
     override func viewWillAppear(_ animated: Bool) {
@@ -30,25 +29,24 @@ class HomeViewController: UIViewController, UIScrollViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
-        
-        viewModel?.fetchForecast()
-        viewModel?.cellData()
+
+        viewModel.homeViewData.cellDatas
             .drive(tableView.rx.items(
                 cellIdentifier: WeatherCell.reuseIdentifier,
                 cellType: WeatherCell.self
             )) { (row, data, cell) in cell.bind(withData: data) }
             .disposed(by: disposeBag)
         
-        viewModel?.headerData()
-            .drive(onNext: { [weak self] data in
+        viewModel.homeViewData.headerData
+            .drive(onNext: { [weak self] data in 
+                self?.headerView?.isHidden = data == nil
                 guard let data = data else { return }
                 self?.headerView?.bind(withData: data)
             })
             .disposed(by: disposeBag)
         
-        viewModel?.isLoading
-            .observe(on: MainScheduler.instance)
-            .subscribe(onNext: { [weak self] isLoading in
+        viewModel.homeViewData.isLoading
+            .drive(onNext: { [weak self] isLoading in
                 self?.tableView.isHidden = isLoading
                 if isLoading {
                     self?.loader.startAnimating()
@@ -65,10 +63,11 @@ class HomeViewController: UIViewController, UIScrollViewDelegate {
         tableView.registerNib(WeatherCell.self)
         setupTableHeaderView()
         setupTableRefreshControl()
-        tableView.rx.itemSelected.subscribe { [weak self] item in
-            guard let row = item.element?.row else { return }
-            self?.viewModel?.showDetailView(forRow: row)
-        }.disposed(by: disposeBag)
+        tableView.rx
+            .itemSelected
+            .map(\.row)
+            .bind(to: viewModel.homeViewData.selectedItem)
+            .disposed(by: disposeBag)
     }
     
     private func setupTableHeaderView() {
@@ -83,7 +82,8 @@ class HomeViewController: UIViewController, UIScrollViewDelegate {
         tableView.refreshControl = refreshControl
         refreshControl.rx
             .controlEvent(.valueChanged)
-            .subscribe(onNext: { [weak self] in self?.viewModel?.fetchForecast(isPullToRefresh: true) })
+            .map { Void() }
+            .bind(to: viewModel.homeViewData.pullToRefresh)
             .disposed(by: disposeBag)
         
     }

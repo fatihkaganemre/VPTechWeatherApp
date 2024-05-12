@@ -8,7 +8,12 @@
 import Foundation
 import RxSwift
 
-class DetailViewModel {
+protocol DetailsViewModelProtocol {
+    func headerData() -> DetailHeaderData?
+    var cellDatas: [WeatherCellData] { get }
+}
+
+class DetailViewModel: DetailsViewModelProtocol {
     private let formatter: FormatterProtocol
     private let dailyForecasts: [DailyForecast]
     private(set) var cellDatas: [WeatherCellData] = []
@@ -19,7 +24,7 @@ class DetailViewModel {
     ) {
         self.dailyForecasts = forecasts
         self.formatter = formatter
-        self.cellDatas = forecasts.map { self.whetherCellData(fromDailyForecast: $0) }
+        self.cellDatas = forecasts.map { whetherCellData(fromDailyForecast: $0) }
     }
     
     func headerData() -> DetailHeaderData? {

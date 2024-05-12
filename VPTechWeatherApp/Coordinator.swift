@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RxSwift
 
 protocol Coordinator {
     var parentCoordinator: Coordinator? { get set }
@@ -23,22 +24,27 @@ class AppCoordinator: Coordinator, AppCoordinatorProtocol {
     var parentCoordinator: Coordinator?
     var children: [Coordinator] = []
     var navigationController: UINavigationController
+    private let dependencies: DependencyContainerProtocol
+    private var disposeBag = DisposeBag()
     
-    init(navigationController : UINavigationController) {
+    init(navigationController : UINavigationController, dependencies: DependencyContainerProtocol) {
         self.navigationController = navigationController
+        self.dependencies = dependencies
     }
     
     func showHomeView() {
-        let viewModel = HomeViewModel(coordinator: self)
-        let controller: HomeViewController = UIStoryboard.main.instantiateViewController()
-        controller.viewModel = viewModel
+        let controller = dependencies.makeHomeViewController()
+        controller.viewModel?.output.bind(onNext: { [weak self] output in
+            switch output {
+                case .alert(let alertViewModel): self?.showAlert(viewModel: alertViewModel)
+                case .details(forecasts: let forecasts): self?.showDetailView(withForecasts: forecasts)
+            }
+        }).disposed(by: disposeBag)
         navigationController.pushViewController(controller, animated: false)
     }
 
     func showDetailView(withForecasts forecasts: [DailyForecast]) {
-        let viewModel = DetailViewModel(forecasts: forecasts)
-        let controller: DetailViewController = UIStoryboard.main.instantiateViewController()
-        controller.viewModel = viewModel
+        let controller = dependencies.makeDetailsViewController(forecasts: forecasts)
         navigationController.pushViewController(controller, animated: true)
     }
     

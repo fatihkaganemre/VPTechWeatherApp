@@ -9,14 +9,32 @@ import Foundation
 import RxSwift
 
 protocol NetworkServiceProtocol {
-    func fetch<T: Decodable>(request: NetworkRequest) -> Observable<T>
+    func getForecast(forCity city: String) -> Observable<Forecast>
 }
 
 class NetworkService: NetworkServiceProtocol {
-    private let session: URLSession = .shared
+    private let session: URLSession
     private let apiKey = "1fed17ca4634e53285f3c97dd0389c2a"
+    private let host = "https://api.openweathermap.org/data/2.5/"
     
-    func fetch<T: Decodable>(request: NetworkRequest) -> Observable<T> {
+    init(session: URLSession = .shared) {
+        self.session = session
+    }
+    
+    func getForecast(forCity city: String) -> Observable<Forecast> {
+        fetch(
+            request: .init(
+                path: host + "forecast",
+                method: .GET,
+                parameters: [
+                    .init(name: "q", value: city),
+                    .init(name: "units", value: "metric")
+                ]
+            )
+        )
+    }
+    
+    private func fetch<T: Decodable>(request: NetworkRequest) -> Observable<T> {
         guard let urlRequest = request.urlRequest(apiKey: apiKey) else {
             return Observable.error(NetworkError.wrongRequest)
         }

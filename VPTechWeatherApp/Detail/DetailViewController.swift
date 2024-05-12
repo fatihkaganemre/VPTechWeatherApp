@@ -12,7 +12,7 @@ import RxCocoa
 class DetailViewController: UIViewController {
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet weak var headerBackgroundView: UIView!
-    var viewModel: DetailViewModel?
+    var viewModel: DetailsViewModelProtocol?
     private var headerView: DetailHeaderView!
     private var disposeBag = DisposeBag()
     

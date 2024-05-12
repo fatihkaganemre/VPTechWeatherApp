@@ -48,7 +48,6 @@
 		3D19F8172BF00B7D00D754C8 /* DetailViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D19F8152BF00B7D00D754C8 /* DetailViewModelTests.swift */; };
 		3D19F81C2BF00C0300D754C8 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D19F8192BF00C0300D754C8 /* HomeViewController.swift */; };
 		3D19F81D2BF00C0300D754C8 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D19F81A2BF00C0300D754C8 /* HomeViewModel.swift */; };
-		3D19F81E2BF00C0300D754C8 /* HomeNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D19F81B2BF00C0300D754C8 /* HomeNetwork.swift */; };
 		3D19F8242BF00C1900D754C8 /* HomeHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D19F8202BF00C1900D754C8 /* HomeHeaderView.xib */; };
 		3D19F8252BF00C1900D754C8 /* WeatherCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D19F8212BF00C1900D754C8 /* WeatherCell.xib */; };
 		3D19F8262BF00C1900D754C8 /* WeatherCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D19F8222BF00C1900D754C8 /* WeatherCell.swift */; };
@@ -58,7 +57,8 @@
 		3D19F8302BF00C3E00D754C8 /* DetailHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D19F82E2BF00C3E00D754C8 /* DetailHeaderView.xib */; };
 		3D19F8312BF00C3E00D754C8 /* DetailHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D19F82F2BF00C3E00D754C8 /* DetailHeaderView.swift */; };
 		3D19F8352BF00CF600D754C8 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 3D19F8342BF00CF600D754C8 /* README.md */; };
-		3D19F8372BF01FF300D754C8 /* CalendarService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D19F8362BF01FF300D754C8 /* CalendarService.swift */; };
+		3D19F8372BF01FF300D754C8 /* CalendarProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D19F8362BF01FF300D754C8 /* CalendarProvider.swift */; };
+		3DF8F5192BF0D8FF00ADD4FD /* DependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF8F5182BF0D8FF00ADD4FD /* DependencyContainer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -114,7 +114,6 @@
 		3D19F8152BF00B7D00D754C8 /* DetailViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewModelTests.swift; sourceTree = "<group>"; };
 		3D19F8192BF00C0300D754C8 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		3D19F81A2BF00C0300D754C8 /* HomeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
-		3D19F81B2BF00C0300D754C8 /* HomeNetwork.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeNetwork.swift; sourceTree = "<group>"; };
 		3D19F8202BF00C1900D754C8 /* HomeHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeHeaderView.xib; sourceTree = "<group>"; };
 		3D19F8212BF00C1900D754C8 /* WeatherCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WeatherCell.xib; sourceTree = "<group>"; };
 		3D19F8222BF00C1900D754C8 /* WeatherCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherCell.swift; sourceTree = "<group>"; };
@@ -124,7 +123,8 @@
 		3D19F82E2BF00C3E00D754C8 /* DetailHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailHeaderView.xib; sourceTree = "<group>"; };
 		3D19F82F2BF00C3E00D754C8 /* DetailHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailHeaderView.swift; sourceTree = "<group>"; };
 		3D19F8342BF00CF600D754C8 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
-		3D19F8362BF01FF300D754C8 /* CalendarService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarService.swift; sourceTree = "<group>"; };
+		3D19F8362BF01FF300D754C8 /* CalendarProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarProvider.swift; sourceTree = "<group>"; };
+		3DF8F5182BF0D8FF00ADD4FD /* DependencyContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyContainer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -194,6 +194,8 @@
 				3D19F80D2BF00B1100D754C8 /* Extensions */,
 				3D19F7A32BEFD5D400D754C8 /* AppDelegate.swift */,
 				3D19F7A52BEFD5D400D754C8 /* SceneDelegate.swift */,
+				3DF8F5182BF0D8FF00ADD4FD /* DependencyContainer.swift */,
+				3D19F8032BF00AED00D754C8 /* Coordinator.swift */,
 				3D19F8122BF00B6C00D754C8 /* Main.storyboard */,
 				3D19F7AC2BEFD5D600D754C8 /* Assets.xcassets */,
 				3D19F7AE2BEFD5D600D754C8 /* LaunchScreen.storyboard */,
@@ -251,11 +253,10 @@
 			isa = PBXGroup;
 			children = (
 				3D19F8052BF00AED00D754C8 /* AlertViewModel.swift */,
-				3D19F8032BF00AED00D754C8 /* Coordinator.swift */,
 				3D19F8062BF00AED00D754C8 /* Formatter.swift */,
 				3D19F8072BF00AED00D754C8 /* NibInstantiatable.swift */,
 				3D19F8042BF00AED00D754C8 /* Reusable.swift */,
-				3D19F8362BF01FF300D754C8 /* CalendarService.swift */,
+				3D19F8362BF01FF300D754C8 /* CalendarProvider.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -272,7 +273,6 @@
 		3D19F8182BF00BF800D754C8 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				3D19F81B2BF00C0300D754C8 /* HomeNetwork.swift */,
 				3D19F8192BF00C0300D754C8 /* HomeViewController.swift */,
 				3D19F81A2BF00C0300D754C8 /* HomeViewModel.swift */,
 				3D19F81F2BF00C0700D754C8 /* Views */,
@@ -475,13 +475,13 @@
 				3D19F81C2BF00C0300D754C8 /* HomeViewController.swift in Sources */,
 				3D19F80A2BF00AED00D754C8 /* AlertViewModel.swift in Sources */,
 				3D19F8312BF00C3E00D754C8 /* DetailHeaderView.swift in Sources */,
-				3D19F8372BF01FF300D754C8 /* CalendarService.swift in Sources */,
+				3D19F8372BF01FF300D754C8 /* CalendarProvider.swift in Sources */,
 				3D19F7FB2BF00ABB00D754C8 /* City.swift in Sources */,
 				3D19F7FD2BF00ABB00D754C8 /* Weather.swift in Sources */,
+				3DF8F5192BF0D8FF00ADD4FD /* DependencyContainer.swift in Sources */,
 				3D19F8012BF00ABB00D754C8 /* Forecast.swift in Sources */,
 				3D19F7FF2BF00ABB00D754C8 /* Main.swift in Sources */,
 				3D19F7A42BEFD5D400D754C8 /* AppDelegate.swift in Sources */,
-				3D19F81E2BF00C0300D754C8 /* HomeNetwork.swift in Sources */,
 				3D19F7EE2BF00A6700D754C8 /* NetworkError.swift in Sources */,
 				3D19F8002BF00ABB00D754C8 /* Coordinate.swift in Sources */,
 				3D19F7FC2BF00ABB00D754C8 /* Sys.swift in Sources */,
