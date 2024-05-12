@@ -43,7 +43,6 @@ class HomeViewController: UIViewController, UIScrollViewDelegate {
             .drive(onNext: { [weak self] data in
                 guard let data = data else { return }
                 self?.headerView?.bind(withData: data)
-                self?.tableView.refreshControl?.endRefreshing()
             })
             .disposed(by: disposeBag)
         
@@ -51,7 +50,12 @@ class HomeViewController: UIViewController, UIScrollViewDelegate {
             .observe(on: MainScheduler.instance)
             .subscribe(onNext: { [weak self] isLoading in
                 self?.tableView.isHidden = isLoading
-                isLoading ? self?.loader.startAnimating() : self?.loader.stopAnimating()
+                if isLoading {
+                    self?.loader.startAnimating()
+                } else {
+                    self?.loader.stopAnimating()
+                    self?.tableView.refreshControl?.endRefreshing()
+                }
             })
             .disposed(by: disposeBag)
     }
@@ -69,7 +73,9 @@ class HomeViewController: UIViewController, UIScrollViewDelegate {
     
     private func setupTableHeaderView() {
         headerView = HomeHeaderView.loadFromNib()
+        headerView?.translatesAutoresizingMaskIntoConstraints = false
         tableView.tableHeaderView = headerView
+        headerView?.centerXAnchor.constraint(equalTo: tableView.centerXAnchor).isActive = true
     }
     
     private func setupTableRefreshControl() {

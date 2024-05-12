@@ -9,6 +9,7 @@ import UIKit
 
 struct HomeHeaderData {
     let name: String?
+    let imageURL: URL?
     let temperature: String?
     let description: String?
     let maxTemperature: String?
@@ -17,6 +18,7 @@ struct HomeHeaderData {
 
 class HomeHeaderView: UIView, NibInstantiatable {
     @IBOutlet private weak var nameLabel: UILabel!
+    @IBOutlet private weak var imageView: UIImageView!
     @IBOutlet private weak var temperatureLabel: UILabel!
     @IBOutlet private weak var descriptionLabel: UILabel!
     @IBOutlet private weak var highAndLowTemperatureLabel: UILabel!
@@ -25,6 +27,10 @@ class HomeHeaderView: UIView, NibInstantiatable {
         nameLabel.text = data.name
         temperatureLabel.text = data.temperature
         descriptionLabel.text = data.description
+        if let url = data.imageURL {
+            imageView.load(url: url)
+        }
+        
         if let max = data.maxTemperature, let min = data.minTemperature {
             highAndLowTemperatureLabel.text = "H:\(max) - L:\(min)"
         }

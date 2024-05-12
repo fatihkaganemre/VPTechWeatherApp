@@ -44,14 +44,8 @@ class HomeViewModel {
         networkService.getForecast(forCity: "Paris")
             .observe(on: MainScheduler.instance)
             .do(
-                onNext: { [weak self] _ in
-                    if !isPullToRefresh {
-                        self?.isLoadingSubject.onNext(false)
-                    }
-                },
-                onError: { [weak self]_ in
-                    self?.showAlert()
-                },
+                onNext: { [weak self] _ in self?.isLoadingSubject.onNext(false) },
+                onError: { [weak self] _ in self?.showAlert() },
                 onSubscribe: { [weak self] in
                     if !isPullToRefresh {
                         self?.isLoadingSubject.onNext(true)
@@ -76,8 +70,14 @@ class HomeViewModel {
             let maxTemp = self.formatter.format(temperature: currentForecast.main.temp_max)
             let minTemp = self.formatter.format(temperature: currentForecast.main.temp_min)
             let description = currentForecast.weather.first?.description.capitalized
+            let imageUrl: URL? = if let icon = currentForecast.weather.first?.icon {
+                URL(string: "https://openweathermap.org/img/wn/\(icon)@2x.png")
+            } else {
+                nil
+            }
             return HomeHeaderData(
                 name: forecast.city.name,
+                imageURL: imageUrl,
                 temperature: temp,
                 description: description,
                 maxTemperature: maxTemp,
