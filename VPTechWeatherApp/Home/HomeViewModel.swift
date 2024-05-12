@@ -106,11 +106,7 @@ class HomeViewModel: HomeViewModelProtocol {
         let maxTemp = formatter.format(temperature: currentForecast.main.temp_max)
         let minTemp = formatter.format(temperature: currentForecast.main.temp_min)
         let description = currentForecast.weather.first?.description.capitalized
-        let imageUrl: URL? = if let icon = currentForecast.weather.first?.icon {
-            URL(string: "https://openweathermap.org/img/wn/\(icon)@2x.png")
-        } else {
-            nil
-        }
+        let imageUrl = getImageUrl(currentForecast.weather.first?.icon)
         return HomeHeaderData(
             name: forecast.city.name,
             imageURL: imageUrl,
@@ -128,11 +124,7 @@ class HomeViewModel: HomeViewModelProtocol {
             let date = forecast.dt.formatted(Date.FormatStyle().weekday(.abbreviated))
             let maxTemp = formatter.format(temperature: forecast.main.temp_max)
             let minTemp = formatter.format(temperature: forecast.main.temp_min)
-            let imageUrl: URL? = if let icon = forecast.weather.first?.icon {
-                URL(string: "https://openweathermap.org/img/wn/\(icon)@2x.png")
-            } else {
-                nil
-            }
+            let imageUrl = getImageUrl(forecast.weather.first?.icon)
             return WeatherCellData(
                 date: date,
                 imageURL: imageUrl,
@@ -161,5 +153,10 @@ class HomeViewModel: HomeViewModelProtocol {
             }
         }
         return groupedDailyForecasts
+    }
+    
+    private func getImageUrl(_ name: String?) -> URL? {
+        guard let name = name else { return nil }
+        return URL(string: "https://openweathermap.org/img/wn/\(name)@2x.png")
     }
 }
