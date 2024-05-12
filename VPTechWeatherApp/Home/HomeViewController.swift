@@ -63,6 +63,7 @@ class HomeViewController: UIViewController, UIScrollViewDelegate {
         tableView.registerNib(WeatherCell.self)
         setupTableHeaderView()
         setupTableRefreshControl()
+        
         tableView.rx
             .itemSelected
             .map(\.row)

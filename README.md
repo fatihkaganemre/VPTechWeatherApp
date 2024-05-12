@@ -11,9 +11,8 @@
 - Coordinator pattern for navigation
 
 # What is next
-- Dependency container
-- Coordinator more reactive
-- Using Rx traits
+
+- Update HomeViewModel in a better way
 - better image fetching with caching the URL !!! or consider using some framework
 - Unit tests
 - Better error handing: 

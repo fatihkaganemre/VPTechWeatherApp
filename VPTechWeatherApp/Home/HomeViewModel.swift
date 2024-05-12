@@ -33,31 +33,24 @@ class HomeViewModel: HomeViewModelProtocol {
     private let calendar: CalendarProviderProtocol
     private var disposeBag = DisposeBag()
     
-    private let isLoadingSubject = BehaviorRelay<Bool>(value: true)
+    private let isLoadingRelay = BehaviorRelay<Bool>(value: true)
     private let isRefreshingRelay = PublishRelay<Bool>()
     private var forecasts: Forecast? = nil
     private var dailyForecasts: [DailyForecast] = []
     
-    lazy var output: Observable<HomeViewModelOutput> = .merge(
-        navigateToDetails,
-        showAlert
-    )
-    
-    var isLoading: Driver<Bool> {
-        isLoadingSubject.asDriver()
+    private var isLoading: Driver<Bool> {
+        isLoadingRelay.asDriver()
     }
     
+    private let refresh = PublishRelay<Void>()
     private lazy var weatherResponse = refresh
         .startWith(())
         .flatMapLatest { [weak self] in self?.networkService.getForecast(forCity: "Paris") ?? .empty() }
         .do(
-            onNext: { [weak self] _ in self?.isLoadingSubject.accept(false) },
-            onError: { [weak self] _ in self?.showAlert() },
-            onSubscribe: { [weak self] in self?.isLoadingSubject.accept(true)  }
+            onNext: { [weak self] _ in self?.isLoadingRelay.accept(false) },
+            onSubscribe: { [weak self] in self?.isLoadingRelay.accept(true)  }
         )
         .share()
-    
-    private let refresh = PublishRelay<Void>()
     private lazy var headerData: Driver<HomeHeaderData?> = weatherResponse
         .map { [weak self] in self?.getHomeHeaderDataFromForecast($0) }
         .asDriver(onErrorJustReturn: nil)
@@ -73,15 +66,23 @@ class HomeViewModel: HomeViewModelProtocol {
         return HomeViewModelOutput.details(forecasts: forecasts)
     }.asObservable()
     
-    private lazy var showAlert = weatherResponse.catch {
-        let alertViewModel = AlertViewModel.requestFailedAlert(errorMessage: "Request Failed")
-        let output = HomeViewModelOutput.alert(alertViewModel)
-        return Observable.just(output)
-    }
+    private lazy var showAlert = weatherResponse
+        .map { _ in Void() }
+        .catch { _ in return .just(Void()) }
+        .map {
+            let alertViewModel = AlertViewModel.requestFailedAlert(errorMessage: "Request Failed")
+            return HomeViewModelOutput.alert(alertViewModel)
+        }
+        .asObservable()
+
     
+    lazy var output: Observable<HomeViewModelOutput> = .merge(
+        navigateToDetails,
+        showAlert
+    )
     
     lazy var homeViewData = HomeViewData(
-        isLoading: isLoadingSubject.asDriver(),
+        isLoading: isLoading,
         headerData: headerData,
         cellDatas: cellDatas,
         selectedItem: selectedItem,
@@ -101,9 +102,9 @@ class HomeViewModel: HomeViewModelProtocol {
     private func getHomeHeaderDataFromForecast(_ forecast: Forecast) -> HomeHeaderData? {
         self.forecasts = forecast
         guard let currentForecast = forecast.list.first else { return nil }
-        let temp = self.formatter.format(temperature: currentForecast.main.temp)
-        let maxTemp = self.formatter.format(temperature: currentForecast.main.temp_max)
-        let minTemp = self.formatter.format(temperature: currentForecast.main.temp_min)
+        let temp = formatter.format(temperature: currentForecast.main.temp)
+        let maxTemp = formatter.format(temperature: currentForecast.main.temp_max)
+        let minTemp = formatter.format(temperature: currentForecast.main.temp_min)
         let description = currentForecast.weather.first?.description.capitalized
         let imageUrl: URL? = if let icon = currentForecast.weather.first?.icon {
             URL(string: "https://openweathermap.org/img/wn/\(icon)@2x.png")
