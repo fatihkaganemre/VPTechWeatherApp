@@ -62,6 +62,7 @@
 		3DF8F5202BF16EF100ADD4FD /* ModelMocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF8F51F2BF16EF100ADD4FD /* ModelMocks.swift */; };
 		3DF8F5222BF171C700ADD4FD /* DependencyMocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF8F5212BF171C700ADD4FD /* DependencyMocks.swift */; };
 		3DF8F5262BF1809C00ADD4FD /* ImageUrlProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF8F5252BF1809C00ADD4FD /* ImageUrlProvider.swift */; };
+		3DF8F5282BF192FE00ADD4FD /* HomeViewModelOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF8F5272BF192FE00ADD4FD /* HomeViewModelOutput.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -131,6 +132,7 @@
 		3DF8F51F2BF16EF100ADD4FD /* ModelMocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelMocks.swift; sourceTree = "<group>"; };
 		3DF8F5212BF171C700ADD4FD /* DependencyMocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyMocks.swift; sourceTree = "<group>"; };
 		3DF8F5252BF1809C00ADD4FD /* ImageUrlProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUrlProvider.swift; sourceTree = "<group>"; };
+		3DF8F5272BF192FE00ADD4FD /* HomeViewModelOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModelOutput.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -281,6 +283,7 @@
 			children = (
 				3D19F8192BF00C0300D754C8 /* HomeViewController.swift */,
 				3D19F81A2BF00C0300D754C8 /* HomeViewModel.swift */,
+				3DF8F5272BF192FE00ADD4FD /* HomeViewModelOutput.swift */,
 				3D19F81F2BF00C0700D754C8 /* Views */,
 			);
 			path = Home;
@@ -503,6 +506,7 @@
 				3D19F8372BF01FF300D754C8 /* CalendarProvider.swift in Sources */,
 				3D19F7FB2BF00ABB00D754C8 /* City.swift in Sources */,
 				3D19F7FD2BF00ABB00D754C8 /* Weather.swift in Sources */,
+				3DF8F5282BF192FE00ADD4FD /* HomeViewModelOutput.swift in Sources */,
 				3DF8F5262BF1809C00ADD4FD /* ImageUrlProvider.swift in Sources */,
 				3DF8F5192BF0D8FF00ADD4FD /* DependencyContainer.swift in Sources */,
 				3D19F8012BF00ABB00D754C8 /* Forecast.swift in Sources */,

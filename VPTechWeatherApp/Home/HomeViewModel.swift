@@ -9,11 +9,6 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-enum HomeViewModelOutput {
-    case alert(AlertViewModel)
-    case details(forecasts: [DailyForecast])
-}
-
 protocol HomeViewModelProtocol {
     var output: Observable<HomeViewModelOutput> { get }
     var homeViewData: HomeViewData { get }
@@ -32,7 +27,7 @@ class HomeViewModel: HomeViewModelProtocol {
     private let isLoadingRelay = BehaviorRelay<Bool>(value: true)
     private let selectedItem = PublishRelay<Int>()
     
-    private lazy var weatherResponse = refresh
+    private lazy var forecastResponse = refresh
         .startWith(())
         .flatMapLatest { [weak self] in self?.networkService.getForecast(forCity: "Paris") ?? .empty() }
         .do(
@@ -46,11 +41,11 @@ class HomeViewModel: HomeViewModelProtocol {
         isLoadingRelay.asDriver()
     }
     
-    private lazy var headerData: Driver<HomeHeaderData?> = weatherResponse
+    private lazy var headerData: Driver<HomeHeaderData?> = forecastResponse
         .map { [weak self] in self?.getHomeHeaderDataFromForecast($0) }
         .asDriver(onErrorJustReturn: nil)
     
-    private lazy var cellDatas: Driver<[WeatherCellData]> = weatherResponse
+    private lazy var cellDatas: Driver<[WeatherCellData]> = forecastResponse
         .map { [weak self] in self?.getCellDatasFromForecast(forecast: $0) ?? [] }
         .asDriver(onErrorJustReturn: [])
     
