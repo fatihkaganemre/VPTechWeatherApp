@@ -9,7 +9,7 @@ import Foundation
 
 struct ImageUrlProvider {
     static func getImageUrl(_ imageName: String?) -> URL? {
-        guard let name = imageName else { return nil }
+        guard let name = imageName, !name.isEmpty else { return nil }
         return URL(string: "https://openweathermap.org/img/wn/\(name)@2x.png")
     }
 }

@@ -7,6 +7,7 @@
 
 import Foundation
 import RxSwift
+import RxCocoa
 @testable import VPTechWeatherApp
 
 class FormatterMock: FormatterProtocol {
@@ -21,11 +22,11 @@ class FormatterMock: FormatterProtocol {
 class NetworkServiceMock: NetworkServiceProtocol {
     var getForecastCallCounter: Int = 0
     var getForecastInputCity: String = ""
-    var getForecastResult: Observable<Forecast> = .never()
+    var getForecastResult = PublishRelay<Forecast>()
     func getForecast(forCity city: String) -> Observable<Forecast> {
         getForecastInputCity = city
         getForecastCallCounter += 1
-        return getForecastResult
+        return getForecastResult.asObservable()
     }
 }
 

@@ -10,9 +10,9 @@
 Driver trait used for driving UI (reference: https://github.com/ReactiveX/RxSwift/blob/main/Documentation/Traits.md)
     
 - UIKit, Storyboards: I had a few options here. I could go with RxSwift + SwiftUI,
-However i believe better to use Combine or/and async/await if i want to use SwiftUI. The other option was UIKit.
-I could write the UI programatically. However There are only 2 views and I did not want to spend much time on that.
-(Because I have got limited amount of time)
+However i believe better to use Combine or/and async/await with SwiftUI. The other option was UIKit.
+I could write the UI programatically. There are only 2 views, so i did not want to spend much time on that.
+(Because I have got limited time)
 
 - MVVM architecture
 - Coordinator pattern for navigation
@@ -20,11 +20,9 @@ I could write the UI programatically. However There are only 2 views and I did n
 
 # What is next
 
-- Update HomeViewModel in a better way
 - Tests:
-    - I have implemented unit tests for viewModel. I could write tests for services.
+    - I have implemented unit tests for viewModels. I could write tests for services.
     I could implement UI or/and Snapshot tests and so on.
-
 - Image Loading: 
     - I have implemented a very basic image caching and loading mechanism.
     It could be handled with an advanced caching which resolves race conditions and so on. 

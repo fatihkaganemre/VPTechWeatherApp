@@ -9,7 +9,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-struct WeatherCellData {
+struct WeatherCellData: Equatable {
     let date: String?
     let imageURL: URL?
     let minTemperature: String?

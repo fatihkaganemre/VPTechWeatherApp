@@ -7,7 +7,7 @@
 
 import UIKit
 
-struct HomeHeaderData {
+struct HomeHeaderData: Equatable {
     let name: String?
     let imageURL: URL?
     let temperature: String?

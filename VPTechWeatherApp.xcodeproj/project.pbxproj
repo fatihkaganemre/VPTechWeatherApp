@@ -63,6 +63,7 @@
 		3DF8F5222BF171C700ADD4FD /* DependencyMocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF8F5212BF171C700ADD4FD /* DependencyMocks.swift */; };
 		3DF8F5262BF1809C00ADD4FD /* ImageUrlProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF8F5252BF1809C00ADD4FD /* ImageUrlProvider.swift */; };
 		3DF8F5282BF192FE00ADD4FD /* HomeViewModelOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF8F5272BF192FE00ADD4FD /* HomeViewModelOutput.swift */; };
+		3DF8F52A2BF1A12000ADD4FD /* CommonMocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF8F5292BF1A12000ADD4FD /* CommonMocks.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -133,6 +134,7 @@
 		3DF8F5212BF171C700ADD4FD /* DependencyMocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyMocks.swift; sourceTree = "<group>"; };
 		3DF8F5252BF1809C00ADD4FD /* ImageUrlProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUrlProvider.swift; sourceTree = "<group>"; };
 		3DF8F5272BF192FE00ADD4FD /* HomeViewModelOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModelOutput.swift; sourceTree = "<group>"; };
+		3DF8F5292BF1A12000ADD4FD /* CommonMocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonMocks.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -325,6 +327,7 @@
 			children = (
 				3DF8F51F2BF16EF100ADD4FD /* ModelMocks.swift */,
 				3DF8F5212BF171C700ADD4FD /* DependencyMocks.swift */,
+				3DF8F5292BF1A12000ADD4FD /* CommonMocks.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -530,6 +533,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3DF8F52A2BF1A12000ADD4FD /* CommonMocks.swift in Sources */,
 				3D19F8162BF00B7D00D754C8 /* HomeViewModelTests.swift in Sources */,
 				3DF8F5222BF171C700ADD4FD /* DependencyMocks.swift in Sources */,
 				3DF8F5202BF16EF100ADD4FD /* ModelMocks.swift in Sources */,
