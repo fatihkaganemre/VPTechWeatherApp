@@ -18,6 +18,36 @@
             endingLineNumber = "38"
             landmarkName = "showHomeView()"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "108D362A-66EC-46D8-842B-231698FD4C87 - 11aea677da14cbcc"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (VPTechWeatherApp.HomeViewModelOutput) -&gt; () in VPTechWeatherApp.AppCoordinator.showHomeView() -&gt; ()"
+                  moduleName = "VPTechWeatherApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/fatih/Apps/VeePeeAssignment/VPTechWeatherApp/Coordinator.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "39"
+                  endingLineNumber = "39">
+               </Location>
+               <Location
+                  uuid = "108D362A-66EC-46D8-842B-231698FD4C87 - 11aea677da14cbcc"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (VPTechWeatherApp.HomeViewModelOutput) -&gt; () in VPTechWeatherApp.AppCoordinator.showHomeView() -&gt; ()"
+                  moduleName = "VPTechWeatherApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/fatih/Apps/VeePeeAssignment/VPTechWeatherApp/Coordinator.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "39"
+                  endingLineNumber = "39">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy

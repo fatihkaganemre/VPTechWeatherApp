@@ -37,7 +37,7 @@ class HomeViewModel: HomeViewModelProtocol {
                 self?.isLoadingRelay.accept(false)
             }
         )
-        .share(replay: 1)
+        .share()
     
     private var isLoading: Driver<Bool> {
         isLoadingRelay.asDriver()
