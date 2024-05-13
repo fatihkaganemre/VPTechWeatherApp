@@ -162,7 +162,6 @@ class HomeViewModelTests: XCTestCase {
         // when
         let sut = makeSut()
         let scheduler = TestScheduler(initialClock: 0)
-        let givenForecast = Forecast.mock()
         let outputObserver = scheduler.createObserver(HomeViewModelOutput.self)
         
         // when
@@ -180,7 +179,12 @@ class HomeViewModelTests: XCTestCase {
         scheduler.start()
         
         // then
-        XCTAssertFalse(outputObserver.events.isEmpty)
+        guard let event = outputObserver.events.first else {
+            XCTFail("no event")
+            return
+        }
+        XCTAssertEqual(event.time, 1)
+        XCTAssertEqual(event.value.element?.isAlert, true)
     }
     
     func test_WhenFetchForecastFailed_shouldStopLoading() {
