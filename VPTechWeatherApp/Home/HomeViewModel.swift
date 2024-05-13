@@ -15,13 +15,25 @@ protocol HomeViewModelProtocol {
 }
 
 class HomeViewModel: HomeViewModelProtocol {
+    lazy var output: Observable<HomeViewModelOutput> = .merge(
+        navigateToDetails,
+        showAlert
+    )
+    
+    lazy var homeViewData = HomeViewData(
+        isLoading: isLoading,
+        headerData: headerData,
+        cellDatas: cellDatas,
+        selectedItem: selectedItem,
+        pullToRefresh: refresh
+    )
+    
     private let networkService: NetworkServiceProtocol
     private let formatter: FormatterProtocol
     private let calendar: CalendarProviderProtocol
     private var disposeBag = DisposeBag()
     private var forecasts: Forecast? = nil
     private var dailyForecasts: [DailyForecast] = []
-    
     private let showAlertRelay = PublishRelay<String>()
     private let refresh = PublishRelay<Void>()
     private let isLoadingRelay = BehaviorRelay<Bool>(value: true)
@@ -29,14 +41,15 @@ class HomeViewModel: HomeViewModelProtocol {
     
     private lazy var forecastResponse = refresh
         .startWith(())
-        .flatMapLatest { [weak self] in self?.networkService.getForecast(forCity: "Paris") ?? .empty() }
-        .do(
-            onNext: { [weak self] _ in self?.isLoadingRelay.accept(false) },
-            onError: { [weak self] error in
-                self?.showAlertRelay.accept(error.localizedDescription)
-                self?.isLoadingRelay.accept(false)
-            }
-        )
+        .flatMapLatest { [weak self] in
+            self?.networkService.getForecast(forCity: "Paris")
+                .catch({ [weak self] error in
+                    self?.showAlertRelay.accept(error.localizedDescription)
+                    self?.isLoadingRelay.accept(false)
+                    return .empty()
+                }) ?? .empty()
+        }
+        .do(onNext: { [weak self] _ in self?.isLoadingRelay.accept(false) })
         .share()
     
     private var isLoading: Driver<Bool> {
@@ -60,19 +73,6 @@ class HomeViewModel: HomeViewModelProtocol {
         let alertViewModel = AlertViewModel.requestFailedAlert(errorMessage: $0)
         return HomeViewModelOutput.alert(alertViewModel)
     }.asObservable()
-    
-    lazy var output: Observable<HomeViewModelOutput> = .merge(
-        navigateToDetails,
-        showAlert
-    )
-    
-    lazy var homeViewData = HomeViewData(
-        isLoading: isLoading,
-        headerData: headerData,
-        cellDatas: cellDatas,
-        selectedItem: selectedItem,
-        pullToRefresh: refresh
-    )
     
     init(
         networkService: NetworkServiceProtocol,

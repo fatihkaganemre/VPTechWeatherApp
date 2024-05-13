@@ -168,56 +168,56 @@ class HomeViewModelTests: XCTestCase {
         XCTAssertEqual(event.value.element?.first?.maxTemperature, "")
     }
     
-//    func test_whenFetchForecastFailed_shouldShowAlert() {
-//        // given
-//        let sut = makeSut()
-//        let scheduler = TestScheduler(initialClock: 0)
-//        let outputObserver = scheduler.createObserver(HomeViewModelOutput.self)
-//        
-//        // when
-//        sut.homeViewData.headerData.drive().disposed(by: disposeBag)
-//        sut.output
-//            .bind(to: outputObserver)
-//            .disposed(by: disposeBag)
-//        
-//        scheduler
-//            .createHotObservable([.error(1, TestError.any)])
-//            .bind(to: networkService.getForecastResult)
-//            .disposed(by: disposeBag)
-//        
-//        scheduler.start()
-//        
-//        // then
-//        guard let event = outputObserver.events.first else {
-//            XCTFail("no event")
-//            return
-//        }
-//        XCTAssertEqual(event.time, 1)
-//        XCTAssertEqual(event.value.element?.isAlert, true)
-//    }
-//    
-//    func test_WhenFetchForecastFailed_shouldStopLoading() {
-//        // given
-//        let sut = makeSut()
-//        let scheduler = TestScheduler(initialClock: 0)
-//        let isLoadingObserver = scheduler.createObserver(Bool.self)
-//        
-//        // when
-//        sut.homeViewData.headerData.drive().disposed(by: disposeBag)
-//        sut.homeViewData.isLoading
-//            .drive(isLoadingObserver)
-//            .disposed(by: disposeBag)
-//        
-//        scheduler
-//            .createHotObservable([.error(1, TestError.any)])
-//            .bind(to: networkService.getForecastResult)
-//            .disposed(by: disposeBag)
-//        
-//        scheduler.start()
-//        
-//        // then
-//        XCTAssertEqual(isLoadingObserver.events, [.next(0, true), .next(1, false)])
-//    }
+    func test_whenFetchForecastFailed_shouldShowAlert() {
+        // given
+        let sut = makeSut()
+        let scheduler = TestScheduler(initialClock: 0)
+        let outputObserver = scheduler.createObserver(HomeViewModelOutput.self)
+        
+        // when
+        sut.homeViewData.headerData.drive().disposed(by: disposeBag)
+        sut.output
+            .bind(to: outputObserver)
+            .disposed(by: disposeBag)
+        
+        scheduler
+            .createHotObservable([.error(1, TestError.any)])
+            .bind(to: networkService.getForecastResult)
+            .disposed(by: disposeBag)
+        
+        scheduler.start()
+        
+        // then
+        guard let event = outputObserver.events.first else {
+            XCTFail("no event")
+            return
+        }
+        XCTAssertEqual(event.time, 1)
+        XCTAssertEqual(event.value.element?.isAlert, true)
+    }
+   
+    func test_WhenFetchForecastFailed_shouldStopLoading() {
+        // given
+        let sut = makeSut()
+        let scheduler = TestScheduler(initialClock: 0)
+        let isLoadingObserver = scheduler.createObserver(Bool.self)
+        
+        // when
+        sut.homeViewData.headerData.drive().disposed(by: disposeBag)
+        sut.homeViewData.isLoading
+            .drive(isLoadingObserver)
+            .disposed(by: disposeBag)
+        
+        scheduler
+            .createColdObservable([.error(1, TestError.any)])
+            .bind(to: networkService.getForecastResult)
+            .disposed(by: disposeBag)
+        
+        scheduler.start()
+        
+        // then
+        XCTAssertEqual(isLoadingObserver.events, [.next(0, true), .next(1, false)])
+    }
     
     func test_whenDailyForecastSelected_shouldShowDetailView() {
         // given

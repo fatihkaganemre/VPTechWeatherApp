@@ -1,8 +1,8 @@
 # VPTechWeatherApp Overview
 
-    The application has two main views. The entry view (AKA home view) displays a daily forecast of Paris.
- When user taps any of daily forecasts, a detail view is shown. Detail view includes
- more detailed forecast information such as hourly forecast, wind speed, pressure, humidity et cetera.
+- The application has two main views. The entry view (AKA home view) displays a daily forecast of Paris.
+When user taps any of daily forecasts, a detail view is shown. Detail view includes
+more detailed forecast information such as hourly forecast, wind speed, pressure, humidity et cetera.
 
 # Architectural choices
 
