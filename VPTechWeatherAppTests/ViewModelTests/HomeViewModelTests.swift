@@ -48,8 +48,10 @@ class HomeViewModelTests: XCTestCase {
     }
     
     func test_whenSubscribedToHomeViewHeaderData_shouldCallGetForecastForParis() {
-        // when
+        // given
         let sut = makeSut()
+        
+        // when
         sut.homeViewData.headerData.drive().disposed(by: disposeBag)
         
         // then
@@ -58,8 +60,22 @@ class HomeViewModelTests: XCTestCase {
     }
     
     func test_whenSubscribedToHomeViewCellDatas_shouldCallGetForecast() {
-        // when
+        // given
         let sut = makeSut()
+        
+        // when
+        sut.homeViewData.cellDatas.drive().disposed(by: disposeBag)
+        
+        // then
+        XCTAssertEqual(networkService.getForecastCallCounter, 1)
+    }
+    
+    func test_whenSubscribedMultipleTimes_shouldCallGetForecastOnlyOnce() {
+        // given
+        let sut = makeSut()
+        
+        // when
+        sut.homeViewData.headerData.drive().disposed(by: disposeBag)
         sut.homeViewData.cellDatas.drive().disposed(by: disposeBag)
         
         // then
@@ -67,7 +83,7 @@ class HomeViewModelTests: XCTestCase {
     }
     
     func test_whenForecastFetched_shouldShowHeaderData() {
-        // when
+        // given
         let sut = makeSut()
         let scheduler = TestScheduler(initialClock: 0)
         let givenForecast = Forecast.mock()
@@ -101,7 +117,7 @@ class HomeViewModelTests: XCTestCase {
     }
     
     func test_whenForecastFetched_shouldStopLoading() {
-        // when
+        // given
         let sut = makeSut()
         let scheduler = TestScheduler(initialClock: 0)
         let givenForecast = Forecast.mock()
@@ -126,7 +142,7 @@ class HomeViewModelTests: XCTestCase {
     }
     
     func test_whenForecastFetched_shouldShowWeatherCells() {
-        // when
+        // given
         let sut = makeSut()
         let scheduler = TestScheduler(initialClock: 0)
         let givenForecast = Forecast.mock()
@@ -159,7 +175,7 @@ class HomeViewModelTests: XCTestCase {
     }
     
     func test_whenFetchForecastFailed_shouldShowAlert() {
-        // when
+        // given
         let sut = makeSut()
         let scheduler = TestScheduler(initialClock: 0)
         let outputObserver = scheduler.createObserver(HomeViewModelOutput.self)
@@ -188,7 +204,7 @@ class HomeViewModelTests: XCTestCase {
     }
     
     func test_WhenFetchForecastFailed_shouldStopLoading() {
-        // when
+        // given
         let sut = makeSut()
         let scheduler = TestScheduler(initialClock: 0)
         let givenForecast = Forecast.mock()
@@ -213,7 +229,7 @@ class HomeViewModelTests: XCTestCase {
     }
     
     func test_whenDailyForecastSelected_shouldShowDetailView() {
-        // when
+        // given
         let sut = makeSut()
         let scheduler = TestScheduler(initialClock: 0)
         let givenForecast = Forecast.mock()
@@ -249,7 +265,7 @@ class HomeViewModelTests: XCTestCase {
     }
     
     func test_whenPullToRefresh_shouldCallGetForecast() {
-        // when
+        // given
         let sut = makeSut()
         let scheduler = TestScheduler(initialClock: 0)
         let givenForecast = Forecast.mock()
