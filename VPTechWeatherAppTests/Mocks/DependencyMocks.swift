@@ -20,8 +20,10 @@ class FormatterMock: FormatterProtocol {
 
 class NetworkServiceMock: NetworkServiceProtocol {
     var getForecastCallCounter: Int = 0
+    var getForecastInputCity: String = ""
     var getForecastResult: Observable<Forecast> = .never()
     func getForecast(forCity city: String) -> Observable<Forecast> {
+        getForecastInputCity = city
         getForecastCallCounter += 1
         return getForecastResult
     }

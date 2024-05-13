@@ -32,8 +32,9 @@ class HomeViewModel: HomeViewModelProtocol {
         .flatMapLatest { [weak self] in self?.networkService.getForecast(forCity: "Paris") ?? .empty() }
         .do(
             onNext: { [weak self] _ in self?.isLoadingRelay.accept(false) },
-            onError: { [weak self] error in self?.showAlertRelay.accept(error.localizedDescription) },
-            onSubscribe: { [weak self] in self?.isLoadingRelay.accept(true)  }
+            onError: { [weak self] error in self?.showAlertRelay.accept(error.localizedDescription)
+                self?.isLoadingRelay.accept(false)
+            }
         )
         .share()
     
