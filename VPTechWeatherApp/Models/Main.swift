@@ -16,5 +16,5 @@ struct Main: Decodable {
     let sea_level: Int
     let grnd_level: Int
     let humidity: Int
-    let temp_kf: Float
+    let temp_kf: Double
 }

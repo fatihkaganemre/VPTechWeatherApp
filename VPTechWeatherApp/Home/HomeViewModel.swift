@@ -24,49 +24,45 @@ class HomeViewModel: HomeViewModelProtocol {
     private let formatter: FormatterProtocol
     private let calendar: CalendarProviderProtocol
     private var disposeBag = DisposeBag()
-    
-    private let isLoadingRelay = BehaviorRelay<Bool>(value: true)
-    private let isRefreshingRelay = PublishRelay<Bool>()
     private var forecasts: Forecast? = nil
     private var dailyForecasts: [DailyForecast] = []
     
-    private var isLoading: Driver<Bool> {
-        isLoadingRelay.asDriver()
-    }
-    
+    private let showAlertRelay = PublishRelay<String>()
     private let refresh = PublishRelay<Void>()
+    private let isLoadingRelay = BehaviorRelay<Bool>(value: true)
+    private let selectedItem = PublishRelay<Int>()
+    
     private lazy var weatherResponse = refresh
         .startWith(())
         .flatMapLatest { [weak self] in self?.networkService.getForecast(forCity: "Paris") ?? .empty() }
         .do(
             onNext: { [weak self] _ in self?.isLoadingRelay.accept(false) },
+            onError: { [weak self] error in self?.showAlertRelay.accept(error.localizedDescription) },
             onSubscribe: { [weak self] in self?.isLoadingRelay.accept(true)  }
         )
         .share()
+    
+    private var isLoading: Driver<Bool> {
+        isLoadingRelay.asDriver()
+    }
+    
     private lazy var headerData: Driver<HomeHeaderData?> = weatherResponse
         .map { [weak self] in self?.getHomeHeaderDataFromForecast($0) }
         .asDriver(onErrorJustReturn: nil)
+    
     private lazy var cellDatas: Driver<[WeatherCellData]> = weatherResponse
         .map { [weak self] in self?.getCellDatasFromForecast(forecast: $0) ?? [] }
         .asDriver(onErrorJustReturn: [])
-    
-    private let selectedItem = PublishRelay<Int>()
-    private let pullToRefresh = PublishRelay<Void>()
     
     private lazy var navigateToDetails = selectedItem.map { [weak self] item in
         let forecasts = self?.getForecastsForSelectedDay(forRow: item) ?? []
         return HomeViewModelOutput.details(forecasts: forecasts)
     }.asObservable()
     
-    private lazy var showAlert = weatherResponse
-        .map { _ in Void() }
-        .catch { _ in return .just(Void()) }
-        .map {
-            let alertViewModel = AlertViewModel.requestFailedAlert(errorMessage: "Request Failed")
-            return HomeViewModelOutput.alert(alertViewModel)
-        }
-        .asObservable()
-
+    private lazy var showAlert = showAlertRelay.map {
+        let alertViewModel = AlertViewModel.requestFailedAlert(errorMessage: $0)
+        return HomeViewModelOutput.alert(alertViewModel)
+    }.asObservable()
     
     lazy var output: Observable<HomeViewModelOutput> = .merge(
         navigateToDetails,
@@ -78,7 +74,7 @@ class HomeViewModel: HomeViewModelProtocol {
         headerData: headerData,
         cellDatas: cellDatas,
         selectedItem: selectedItem,
-        pullToRefresh: pullToRefresh
+        pullToRefresh: refresh
     )
     
     init(
@@ -98,7 +94,7 @@ class HomeViewModel: HomeViewModelProtocol {
         let maxTemp = formatter.format(temperature: currentForecast.main.temp_max)
         let minTemp = formatter.format(temperature: currentForecast.main.temp_min)
         let description = currentForecast.weather.first?.description.capitalized
-        let imageUrl = getImageUrl(currentForecast.weather.first?.icon)
+        let imageUrl = ImageUrlProvider.getImageUrl(currentForecast.weather.first?.icon)
         return HomeHeaderData(
             name: forecast.city.name,
             imageURL: imageUrl,
@@ -116,7 +112,7 @@ class HomeViewModel: HomeViewModelProtocol {
             let date = forecast.dt.formatted(Date.FormatStyle().weekday(.abbreviated))
             let maxTemp = formatter.format(temperature: forecast.main.temp_max)
             let minTemp = formatter.format(temperature: forecast.main.temp_min)
-            let imageUrl = getImageUrl(forecast.weather.first?.icon)
+            let imageUrl = ImageUrlProvider.getImageUrl(forecast.weather.first?.icon)
             return WeatherCellData(
                 date: date,
                 imageURL: imageUrl,
@@ -145,10 +141,5 @@ class HomeViewModel: HomeViewModelProtocol {
             }
         }
         return groupedDailyForecasts
-    }
-    
-    private func getImageUrl(_ name: String?) -> URL? {
-        guard let name = name else { return nil }
-        return URL(string: "https://openweathermap.org/img/wn/\(name)@2x.png")
     }
 }

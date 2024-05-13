@@ -29,7 +29,7 @@ class DetailViewModel: DetailsViewModelProtocol {
     
     func headerData() -> DetailHeaderData? {
         guard let currentForecast = dailyForecasts.first else { return nil }
-        let imageUrl = getImageUrl(currentForecast.weather.first?.icon)
+        let imageUrl = ImageUrlProvider.getImageUrl(currentForecast.weather.first?.icon)
         let temp = formatter.format(temperature: currentForecast.main.temp)
         let feelsLike = formatter.format(temperature: currentForecast.main.feels_like)
         let maxTemp = formatter.format(temperature: currentForecast.main.temp_max)
@@ -57,17 +57,12 @@ class DetailViewModel: DetailsViewModelProtocol {
         let date = forecast.dt.formatted(date: .omitted, time: .shortened)
         let maxTemp = formatter.format(temperature: forecast.main.temp_max)
         let minTemp = formatter.format(temperature: forecast.main.temp_min)
-        let imageUrl = getImageUrl(forecast.weather.first?.icon)
+        let imageUrl = ImageUrlProvider.getImageUrl(forecast.weather.first?.icon)
         return WeatherCellData(
             date: date,
             imageURL: imageUrl,
             minTemperature: minTemp,
             maxTemperature: maxTemp
         )
-    }
-    
-    private func getImageUrl(_ name: String?) -> URL? {
-        guard let name = name else { return nil }
-        return URL(string: "https://openweathermap.org/img/wn/\(name)@2x.png")
     }
 }
