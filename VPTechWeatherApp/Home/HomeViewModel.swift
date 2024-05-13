@@ -41,15 +41,14 @@ class HomeViewModel: HomeViewModelProtocol {
     
     private lazy var forecastResponse = refresh
         .startWith(())
-        .flatMapLatest { [weak self] in
-            self?.networkService.getForecast(forCity: "Paris")
-                .catch({ [weak self] error in
-                    self?.showAlertRelay.accept(error.localizedDescription)
-                    self?.isLoadingRelay.accept(false)
-                    return .empty()
-                }) ?? .empty()
-        }
-        .do(onNext: { [weak self] _ in self?.isLoadingRelay.accept(false) })
+        .flatMapLatest { [weak self] in self?.networkService.getForecast(forCity: "Paris") ?? .empty() }
+        .do(
+            onNext: { [weak self] _ in self?.isLoadingRelay.accept(false) },
+            onError: { [weak self] error in
+                self?.showAlertRelay.accept(error.localizedDescription)
+                self?.isLoadingRelay.accept(false)
+            }
+        )
         .share()
     
     private var isLoading: Driver<Bool> {
